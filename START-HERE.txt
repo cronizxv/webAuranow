@@ -1,0 +1,59 @@
+CRONIZXV — publish an additional site on GitHub Pages
+
+This copy is separate from your Vercel project. Leave croniz.xyz on Vercel.
+Do not add a CNAME file or enter croniz.xyz as a GitHub Pages custom domain.
+
+EASIEST: UPLOAD WITH YOUR WEB BROWSER
+
+1. On GitHub, create a new PUBLIC repository. You can call it cronizxv-site.
+   Keep its default branch named main. Initializing it with a README is fine.
+2. Unzip this package and open the CRONIZXV-GitHub-Pages folder.
+3. In the GitHub repository, choose Add file > Upload files.
+4. Drag the CONTENTS of that folder into the upload page. Upload package.json,
+   package-lock.json, index.html, vite.config.ts, src, public and .github at the
+   TOP LEVEL. Do not upload the ZIP or an extra enclosing folder.
+5. Commit the files to main.
+6. Open repository Settings > Pages. Under Build and deployment, change Source
+   to GitHub Actions.
+7. Open the Actions tab. Select Publish CRONIZXV to GitHub Pages. If needed,
+   choose Run workflow on main. If an early attempt failed before you enabled
+   Pages, re-run it after completing step 6.
+8. When the workflow is green, the live URL appears in Settings > Pages and
+   in the workflow deployment. Future commits to main publish automatically.
+
+IMPORTANT: the .github/workflows/deploy-pages.yml file must be uploaded.
+If your browser omits the .github folder, use Add file > Create new file.
+Enter .github/workflows/deploy-pages.yml as the filename, paste the workflow
+from this package, and commit it. This is your own deployment workflow.
+
+Your GitHub site URL will be your GitHub username followed by .github.io and
+then /your-repository-name/. You do NOT need to change any asset paths for
+that repository name: this package uses relative paths.
+
+ALTERNATIVE: TERMINAL (from this package's folder)
+
+Create the empty public repository on GitHub first. Then run:
+
+git init
+git add .
+git commit -m "Add CRONIZXV website"
+git branch -M main
+git remote add origin YOUR-GITHUB-REPOSITORY-HTTPS-URL
+git push -u origin main
+
+Replace YOUR-GITHUB-REPOSITORY-HTTPS-URL with the actual URL shown by GitHub.
+Then enable GitHub Actions in Settings > Pages as described above.
+No API keys or repository secrets are required by the supplied workflow.
+
+LOCAL PREVIEW
+
+Requires Node.js 22.12 or newer:
+npm install
+npm run dev
+
+To test production output:
+npm run build
+npm run preview
+
+Official reference:
+https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site
